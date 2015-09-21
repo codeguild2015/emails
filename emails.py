@@ -17,7 +17,10 @@ def tuple_full():
     for name, count in count_dict.items():
         final_lst.append([count,name])
     final_lst.sort(reverse=True)
-    print(final_lst)
-        
+    
+    for item in final_lst:
+        print(item)
+     
+
 
 tuple_full()
