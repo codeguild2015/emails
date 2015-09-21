@@ -18,8 +18,7 @@ def tuple_full():
         final_lst.append([count,name])
     final_lst.sort(reverse=True)
     
-    for item in final_lst:
-        print(item)
+    print(str(final_lst[0][0]) + " - " + final_lst[0][1])
      
 
 
