@@ -9,10 +9,11 @@ def list_split(file):
     lst = []
     for line in file:
         if line.split(" ")[0] == "From":
-            lst.append(line.split(" "))
+            a = line.replace("  ", " ")
+            lst.append(a.split(" "))
     return lst
 
-def build_dict(lst):
+def build_dict_names(lst):
     count_dict = {}
     """Returns a dictionary of lists with each containing count of commits and author"""
     for item in lst:
@@ -21,6 +22,16 @@ def build_dict(lst):
         else:
             count_dict.update({item[1]: 1})
     return count_dict
+	
+def build_dict_hours(lst):
+    count_hours = {}
+    """Returns a dictionary of lists with each containing count of commits and author"""
+    for item in lst:
+        if int(item[5][:2]) in count_hours:
+            count_hours[int(item[5][:2])] += 1
+        else:
+            count_hours.update({int(item[5][:2]): 1})
+    return count_hours
 
 def final(dict):
     """Takes dictionary and returns sorted list"""
@@ -34,9 +45,11 @@ def final(dict):
 def main():
     file = open_file()
     lst = list_split(file)
-    count = build_dict(lst)
+    count = build_dict_names(lst)
     final_list = final(count)
     print(str(final_list[0][0]) + " - " + final_list[0][1])
+    count_hours = build_dict_hours(lst)
+    print(count_hours)
 
 main()
 
