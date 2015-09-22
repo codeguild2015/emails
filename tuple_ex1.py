@@ -3,6 +3,8 @@
 
 
 def parsefile(filename):
+    '''Inputs file containing mbox file
+    Outputs - list with elements containing addresses, and times stamps.
     file = open(filename, 'r')
     for line in file:
         lst1 = line.split()
@@ -15,4 +17,4 @@ def parsefile(filename):
 	
 #def count_user_commits:
 
-parsefile('mbox.txt')
+parsefile('mbox-short.txt')
