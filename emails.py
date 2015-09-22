@@ -46,9 +46,13 @@ def main():
     name_count = build_dict_names(lst)
     final_list = final(name_count)
     hours_count = build_dict_hours(lst)
+    
+
     print("Most commits = " + str(final_list[0][0]) + " - " + final_list[0][1])
     for item in hours_count:
-        print("Hours: {}, Commits: {}".format(item, hours_count[item]))
+        print("Hour: {}, Commits: {}".format(item, hours_count[item]))
+    print("Total Commits = {}".format(len(lst)))
+
 
 main()
  
