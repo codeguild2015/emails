@@ -4,15 +4,15 @@ def open_file():
     file = open(filename, 'r')
     return file
 
-def list_split(file):
+def list_split(iter1):
     """Parses the .txt file, extracts all lines starting with "From" and appends them to a list."""
     lst = []
-    for line in file:
+    for line in iter1:
         if line.split(" ")[0] == "From":
-            lst.append(line.split(" "))
+            lst.append(line.replace("  ", " ").split(" "))
     return lst
 
-def build_dict(lst):
+def build_dict_names(lst):
     count_dict = {}
     """Returns a dictionary of lists with each containing count of commits and author"""
     for item in lst:
@@ -21,6 +21,15 @@ def build_dict(lst):
         else:
             count_dict.update({item[1]: 1})
     return count_dict
+
+def build_dict_hours(lst):
+    hours_dict = {}
+    for item in lst:
+        if int(item[5][:2]) in hours_dict:
+            hours_dict[int(item[5][:2])] += 1
+        else:
+            hours_dict.update({int(item[5][:2]): 1})
+    return hours_dict
 
 def final(dict):
     """Takes dictionary and returns sorted list"""
@@ -34,8 +43,12 @@ def final(dict):
 def main():
     file = open_file()
     lst = list_split(file)
-    count = build_dict(lst)
-    final_list = final(count)
-    print(str(final_list[0][0]) + " - " + final_list[0][1])
+    name_count = build_dict_names(lst)
+    final_list = final(name_count)
+    hours_count = build_dict_hours(lst)
+    print("Most commits = " + str(final_list[0][0]) + " - " + final_list[0][1])
+    for item in hours_count:
+        print("Hours: {}, Commits: {}".format(item, hours_count[item]))
 
 main()
+ 
