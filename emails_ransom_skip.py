@@ -56,7 +56,7 @@ def count_(lst, unique):
             if name == elem[0]:
                 count += 1
 
-        t.append((name, count))
+            t.append((name, count))
     return(t)
 
 
@@ -64,9 +64,9 @@ def sort_reverse(lst_of_tups):
     '''input list of tuples from count function
 	output sorted list keying on the # of commits value'''
     #lst_of_tups.sort(reverse = True)
-    print("lst_of_tups contains:  ", lst_of_tups)
+    #print("lst_of_tups contains:  ", lst_of_tups)
     reversed_tups = sorted(lst_of_tups,key=lambda x:(-x[1],x[0]))
-    print("reverse sorted list is: ", reversed_tups )
+    #print("reverse sorted list is: ", reversed_tups )
     return reversed_tups
    
 #Test files for assertions
@@ -86,11 +86,15 @@ assert read_file(file3) == [['fist_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', 
 #print("Assert tests passed")
 #print(read_file(file3))
 raw_commits = read_file(file7)
-print(raw_commits)
+# print(raw_commits)
+
+
 ''' remove_unique_address() assertions '''
+unique_list = remove_unique_address(raw_commits)
+#print(unique_list)
 
 
-''' count() assertions '''
+''' count_() assertions '''
 # dummy lists to pass to count
 #unique = ['sally', 'jessie', 'raphael']
 #lst = [['sally', '1', '2'], ['sally', '1', '2'], ['raphael', '1', '2']]
@@ -100,10 +104,14 @@ print(raw_commits)
 #lst = read_file(file) 
 #lst2 = count(lst, unique_list)
 #print("list in main is: ", lst)
+result = count_(raw_commits, unique_list)
+print(result)
 
 
 ''' sort_reverse() assertions '''
 #print( "the sorted list return value is:  ", sort_reverse(t) )
+reversed = sort_reverse(result)
+print(reversed)
 
 
 
