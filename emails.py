@@ -1,6 +1,6 @@
-"""put in header with authors and how it works and stuff
-
-check google style guide"""
+#put in header with authors and how it works and stuff
+#
+#check google style guide
 
 def open_file():
     """Open file and return text as a variable"""
@@ -26,13 +26,19 @@ def build_count_dict(lst):
         count_dict[item[1]] = count_dict.get(item[1], 0) + 1
     return count_dict
 
+def prep_out_most(dict1):
+    head, *tail = sorted(dict1.items(), key=lambda x:x[1], reverse=True)
+    print("Most commits: {} - {}\n".format(head[0], head[1]))
+
 
 def main():
+    """ put comment here please"""
     iter1 = open_file()
     lst = list_split(iter1)
     name_count = build_count_dict(lst)
-    head, *tail = sorted(name_count.items(), key=lambda x:x[1], reverse=True)
-    print("Most commits: {} - {}\n".format(head[0], head[1]))
+    prep_out_most(name_count)
+
+
     
 
 main()
