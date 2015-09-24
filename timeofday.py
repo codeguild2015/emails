@@ -19,16 +19,16 @@ def list_split(iter1):
     return lst
 
 
-def build_dict_hours(lst):
-    hours_dict = {}
+def build_count_dict(lst):
+    count_dict = {}
     for item in lst:
-        hours_dict[item[5][:2]] = hours_dict.get(item[5][:2], 0) + 1
-    return hours_dict
+        count_dict[item[5][:2]] = count_dict.get(item[5][:2], 0) + 1
+    return count_dict
 
 def main():
     iter1 = open_file()
     lst = list_split(iter1)
-    hours_count = build_dict_hours(lst)
+    hours_count = build_count_dict(lst)
 
 
     print("Hour - Commits")

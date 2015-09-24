@@ -3,7 +3,7 @@
 check google style guide"""
 
 def open_file():
-    """Opens file and saves text as a variable"""
+    """Open file and return text as a variable"""
     filename = input("\nInput filename "  )
     file1 = open(filename, 'r')
     return file1
@@ -19,7 +19,7 @@ def list_split(iter1):
     return lst
 
 
-def build_dict_names(lst):
+def build_count_dict(lst):
     """Return a dictionary of lists with each containing count of commits and author"""
     count_dict = {}
     for item in lst:
@@ -30,10 +30,10 @@ def build_dict_names(lst):
 def main():
     iter1 = open_file()
     lst = list_split(iter1)
-    name_count = build_dict_names(lst)
+    name_count = build_count_dict(lst)
     head, *tail = sorted(name_count.items(), key=lambda x:x[1], reverse=True)
     print("Most commits: {} - {}\n".format(head[0], head[1]))
     
-       
+
 main()
  
