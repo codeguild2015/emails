@@ -20,19 +20,24 @@ def list_split(iter1):
 
 
 def build_count_dict(lst):
+    """ put comment here please"""
     count_dict = {}
     for item in lst:
         count_dict[item[5][:2]] = count_dict.get(item[5][:2], 0) + 1
     return count_dict
 
+def prep_out_list(dict1):
+    """please add header here"""
+    print("Hour - Commits")
+    for item in sorted(dict1):
+        print("{} - {}".format(item, dict1[item]))
+
+
 def main():
+    """ put comment here please"""
     iter1 = open_file()
     lst = list_split(iter1)
     hours_count = build_count_dict(lst)
-
-
-    print("Hour - Commits")
-    for item in sorted(hours_count):
-        print("{} - {}".format(item, hours_count[item]))
+    prep_out_list(hours_count)
 
 main()
