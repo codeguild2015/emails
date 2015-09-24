@@ -14,7 +14,6 @@ def open_file():
 	Output:
 	string 
 	file turned into string and assigned to variable for input on other functions"""
-	
 	filename = input("Please input file name: ")
 	file = open(filename, 'r')
 	return file
@@ -46,9 +45,8 @@ def dict_times(lst):
 	lst: list
 	
 	Output:
-	times: dictionary
-	'''
-	
+	times: dictionary'''
+
 	times = {} 
 	for item in lst:
 		if item[5][0:2] in times:
@@ -58,15 +56,15 @@ def dict_times(lst):
 	return times
 
 def dict_names(lst):
-''' takes lst, creates dict, updates indexed items to dict, otherwise, creates item in dict. 
+	''' takes lst, creates dict, updates indexed items to dict, otherwise, creates item in dict. 
 	Parameters
 	----------
 	Input:
 	lst: list
 	
 	Output:
-	times: dictionary
-	'''
+	times: dictionary'''
+	
 	emails = {}
 	for item in lst:
 		if item[1] in emails:
@@ -105,7 +103,7 @@ def combine_times(times):
 	
 	lst = []
 	for name, count in times.items():
-		lst.append([count, name])
+		lst.append([name , count])
 	lst.sort()
 	return lst
 	
@@ -121,9 +119,7 @@ def main():
 	times: dict
 	names: dict
 	final_email: list
-	final_times: list
-	
-	"""
+	final_times: list"""
 	doc = open_file()
 	lst = file_to_list(doc)
 	times = dict_times(lst)
@@ -133,6 +129,7 @@ def main():
 	print(final_email[0])
 	print()	
 	for item in final_times:
-		print("Commits for the hour: ",item)
+		print("Hour:", item[0], "Commits:", item[1])
+
 
 main()
