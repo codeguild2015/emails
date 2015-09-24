@@ -4,7 +4,7 @@
 
 def open_file():
     """Opens file and saves text as a variable"""
-    filename = input("\nInput filename "  )
+    filename = input("\nEnter a file name: "  )
     file1 = open(filename, 'r')
     return file1
 

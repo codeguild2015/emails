@@ -26,6 +26,7 @@ def build_count_dict(lst):
         count_dict[item[1]] = count_dict.get(item[1], 0) + 1
     return count_dict
 
+
 def prep_out_most(dict1):
     """please add header here"""
     head, *tail = sorted(dict1.items(), key=lambda x:x[1], reverse=True)
@@ -42,15 +43,7 @@ def main():
 
 
     
+if __name__ == '__main__':
+    main()
 
-#main()
 
-assert list_split([]) == []
-assert list_split(["From me to you", "Not from me to you"]) == [['From', 'me', 'to', 'you']]
-assert list_split(["from me to you", "Not from me to you"]) == []
-
-assert build_count_dict([]) == {}
-assert build_count_dict([['From', 'me', 'to', 'you']]) == {"me" : 1}
-assert build_count_dict([['From', 'me', 'to', 'you'], ['From', 'me', 'to', 'you']]) == {"me" : 2}
- 
-assert prep_out_most({"Patrick" : 10, "Nick" : 20}) == ("Nick", 20)
