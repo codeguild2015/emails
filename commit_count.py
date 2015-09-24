@@ -47,19 +47,17 @@ def count(lst, unique):
                 #print("name is:  ", name)
                 #print("count is:  ", count)
 
-    t.append((name, count))
+        t.append((name, count))
     return(t)
-        #t = name, count
-        #print("t is type: ", type(t))
-    #print("t contains:  ", t)
 
 
 def sort_reverse(lst_of_tups):
     '''input list of tuples from count function
-	output reverse sorted list from users with most to least commits'''
+	output sorted list keying on the # of commits value'''
     #lst_of_tups.sort(reverse = True)
-    pass
-
+    print("lst_of_tups contains:  ", lst_of_tups)
+    #print(sorted(lst_of_tups, key=lambda commits: commits[1]) )
+    return( sorted(lst_of_tups, key=lambda commits: commits[1]) )
    
 #Test files for assertions
 file1 = 'one_good_line.txt'
@@ -77,15 +75,18 @@ file4 = 'bogus_file.txt'
 #count assertions
 # dummy lists to pass to count
 unique = ['sally', 'jessie', 'raphael']
-lst = [['sally', '1', '2'], ['sally', '1', '2']]
-
+#lst = [['sally', '1', '2'], ['sally', '1', '2']]
+lst = [['sally', '1', '2'], ['sally', '1', '2'], ['raphael', '1', '2']]
 t = count(lst, unique)
-print("The returned value of t is:  ", t)
+#print("The returned value of t is:  ", t)
 #lst = read_file(file4)
 #lst = read_file(file) 
 #lst2 = count(lst, unique_list)
 #print("list in main is: ", lst)
 
+#sort_reverse assertions
+
+print( "the sorted list return value is:  ", sort_reverse(t) )
 
 
 
