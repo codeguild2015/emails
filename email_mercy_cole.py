@@ -9,8 +9,13 @@
 
 
 def split_line(line):
-    """ Split a line (comes in a string)
-    Return a list of words, split on the spaces
+    """ Split a line (stirng)
+
+    Args:
+        line - a string
+
+    Return:
+        a list of stings
      """
     try:
         return line.split(' ')
@@ -21,7 +26,12 @@ def split_line(line):
 def check_for_from(lst):
     """ Isolate lists which start with From (but not From:)
     and of a specific length
-    Return True or False
+
+    Args:
+        lst - a list
+
+    Return:
+        a boolean
     """
     if lst[0] == 'From' and len(lst) == 7:
         return True
@@ -30,9 +40,13 @@ def check_for_from(lst):
 
 
 def count_occurances(lst):
-    """ Gets list of names
-    Return counts per name
-    List of tuples (count, name)
+    """ Counts the times a name appears in the list.
+
+    Args:
+        lst - a list of strings
+
+    Return:
+        List of tuples (count, name)
     """
     goofy = [(lst.count(emails), emails) for emails in lst]
     compressed = []
