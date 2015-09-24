@@ -1,6 +1,7 @@
 # Authored by Jaydn C and Connor M
 # Written 9/24/15
-# Program to read in a file, pull lines out based on user inputed string keyword
+# Program to read in a file, pull lines out based on string keyword
+# converts lines into a dictionary to be sorted and returned as sorted list to print. 
 
 def open_file():
 	""" Opens file, returns contents
@@ -57,7 +58,15 @@ def dict_times(lst):
 	return times
 
 def dict_names(lst):
-	""" takes list of emails and puts them into a dictonary"""
+''' takes lst, creates dict, updates indexed items to dict, otherwise, creates item in dict. 
+	Parameters
+	----------
+	Input:
+	lst: list
+	
+	Output:
+	times: dictionary
+	'''
 	emails = {}
 	for item in lst:
 		if item[1] in emails:
@@ -67,7 +76,16 @@ def dict_names(lst):
 	return emails	
 	
 def combine_emails(names):
-	""" Turns dictonary into a sortable list"""
+	""" Takes dictonary in, converts item pairs in dict to a list
+	Parameters
+	----------
+	Input:
+	dict1: dictionary
+	
+	Output:
+	lst: list
+	sorted list """
+	
 	lst = [] 
 	for name, count in names.items():
 		lst.append([count, name])
@@ -75,7 +93,16 @@ def combine_emails(names):
 	return lst
 	
 def combine_times(times):
-	''' Turns time dictonary into sortable list''' 
+	""" Takes dictonary in, converts item pairs in dict to a list
+	Parameters
+	----------
+	Input:
+	dict1: dictionary
+	
+	Output:
+	lst: list
+	sorted list """
+	
 	lst = []
 	for name, count in times.items():
 		lst.append([count, name])
@@ -83,7 +110,20 @@ def combine_times(times):
 	return lst
 	
 def main():
-""" Calls each funtion in order, assigns input variables for each subsequent function"""
+	""" Calls each funtion in order, assigns input variables for each subsequent function
+	Parameters
+	----------
+	Inputs:
+	
+	Outputs:
+	doc: string
+	lst: list
+	times: dict
+	names: dict
+	final_email: list
+	final_times: list
+	
+	"""
 	doc = open_file()
 	lst = file_to_list(doc)
 	times = dict_times(lst)
