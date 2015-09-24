@@ -1,6 +1,6 @@
-"""put in header with authors and how it works and stuff
-
-check google style guide"""
+#put in header with authors and how it works and stuff
+#
+#check google style guide
 
 def open_file():
     """Opens file and saves text as a variable"""
@@ -19,21 +19,20 @@ def list_split(iter1):
     return lst
 
 
-def build_dict_names(lst):
-    """Return a dictionary of lists with each containing count of commits and author"""
-    count_dict = {}
+def build_dict_hours(lst):
+    hours_dict = {}
     for item in lst:
-        count_dict[item[1]] = count_dict.get(item[1], 0) + 1
-    return count_dict
-
+        hours_dict[item[5][:2]] = hours_dict.get(item[5][:2], 0) + 1
+    return hours_dict
 
 def main():
     iter1 = open_file()
     lst = list_split(iter1)
-    name_count = build_dict_names(lst)
-    head, *tail = sorted(name_count.items(), key=lambda x:x[1], reverse=True)
-    print("Most commits: {} - {}\n".format(head[0], head[1]))
-    
-       
+    hours_count = build_dict_hours(lst)
+
+
+    print("Hour - Commits")
+    for item in sorted(hours_count):
+        print("{} - {}".format(item, hours_count[item]))
+
 main()
- 
