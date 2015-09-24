@@ -1,8 +1,11 @@
 # Title: emails_mercy_cole.py
 # Authors: Mercy and Cole 
+#
 # Get the names and the number of they appear from user file
 # Input: User Defined
-# Output: A list of tuples sorted by count (in reverse order)
+# Output: The most prolific commiter and the count
+# 
+# Run from command line with python3 emails_mercy_cole.py
 
 
 def split_line(line):
@@ -52,9 +55,8 @@ def main():
             name_lst.append(temp_lst[1])
     count_list = count_occurances(name_lst)
     count_list.sort(reverse=True)
-    [print(count_list[idx][0], count_list[idx][1]) for idx, elem in
-     enumerate(count_list)]
-
+    print(count_list[0][0], count_list[0][1])
+  
 
 if __name__ == '__main__':
     assert split_line('Are you working?') == ['Are', 'you', 'working?']
