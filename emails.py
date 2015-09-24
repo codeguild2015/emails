@@ -14,22 +14,16 @@ def list_split(iter1):
     return lst
 
 def build_dict_names(lst):
-    count_dict = {}
     """Returns a dictionary of lists with each containing count of commits and author"""
+    count_dict = {}
     for item in lst:
-        if item[1] in count_dict:
-            count_dict[item[1]] += 1
-        else:
-            count_dict.update({item[1]: 1})
+        count_dict[item[1]] = count_dict.get(item[1], 0) + 1
     return count_dict
 
 def build_dict_hours(lst):
     hours_dict = {}
     for item in lst:
-        if int(item[5][:2]) in hours_dict:
-            hours_dict[int(item[5][:2])] += 1
-        else:
-            hours_dict.update({int(item[5][:2]): 1})
+        hours_dict[item[5][:2]] = hours_dict.get(item[5][:2], 0) + 1
     return hours_dict
 
 def final(dict):
@@ -50,9 +44,9 @@ def main():
     
 
     print("Most commits = " + str(final_list[0][0]) + " - " + final_list[0][1])
-    for item in hours_count:
+    for item in sorted(hours_count):
         print("Hour: {}, Commits: {}".format(item, hours_count[item]))
-    print("Total Commits = {}".format(len(lst)))
+
 
 
 main()
