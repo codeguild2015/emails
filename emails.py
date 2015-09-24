@@ -1,15 +1,16 @@
 def open_file():
     """Opens file and saves text as a variable"""
     filename = input("input filename "  )
-    file = open(filename, 'r')
-    return file
+    file1 = open(filename, 'r')
+    return file1
 
 def list_split(iter1):
     """Parses the .txt file, extracts all lines starting with "From" and appends them to a list."""
     lst = []
     for line in iter1:
-        if line.split(" ")[0] == "From":
-            lst.append(line.replace("  ", " ").split(" "))
+        line_temp = line.replace("  ", " ").split(" ")
+        if line_temp[0] == "From":
+            lst.append(line_temp)
     return lst
 
 def build_dict_names(lst):
@@ -41,8 +42,8 @@ def final(dict):
 
 
 def main():
-    file = open_file()
-    lst = list_split(file)
+    iter1 = open_file()
+    lst = list_split(iter1)
     name_count = build_dict_names(lst)
     final_list = final(name_count)
     hours_count = build_dict_hours(lst)
