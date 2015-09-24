@@ -8,7 +8,10 @@ def list_split(iter1):
     """Parses the .txt file, extracts all lines starting with "From" and appends them to a list."""
     lst = []
     for line in iter1:
-        line_temp = line.replace("  ", " ").split(" ")
+	#In order to split the lines into a list so that they can be indexed, occasional 
+	#instances of two spaces related to Date input (e.g. Jan 21 vs Jan  1) 
+	#needed to be reduced to one space to avoid incorrect indexing
+        line_temp = line.replace("  ", " ").split(" ")  
         if line_temp[0] == "From":
             lst.append(line_temp)
     return lst
@@ -34,7 +37,7 @@ def build_dict_hours(lst):
 
 def final(dict):
     """Takes dictionary and returns sorted list"""
-    final_list = []
+    final_list = []   #empty list for storing dictionary elements in
     for name, count in dict.items():
         final_list.append([count,name])
     final_list.sort(reverse=True)
@@ -56,3 +59,8 @@ def main():
 
 
 main()
+
+
+assert(main('This should not return anything') == None
+
+#assert(main('From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008') == 
