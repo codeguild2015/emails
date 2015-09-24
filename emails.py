@@ -27,6 +27,7 @@ def build_count_dict(lst):
     return count_dict
 
 def prep_out_most(dict1):
+    """please add header here"""
     head, *tail = sorted(dict1.items(), key=lambda x:x[1], reverse=True)
     print("Most commits: {} - {}\n".format(head[0], head[1]))
 
