@@ -4,16 +4,17 @@
 # converts lines into a dictionary to be sorted and returned as sorted list to print. 
 
 def open_file():
-	""" Opens file, returns contents
+	""" Prompting user for file name, opens corresponding file, returns contents.
+	
 	Paramaters
 	-----
 	Input:
-	file
-	text doc
+	None
 	
 	Output:
-	string 
+	file: string
 	file turned into string and assigned to variable for input on other functions"""
+	
 	filename = input("Please input file name: ")
 	file = open(filename, 'r')
 	return file
@@ -24,6 +25,8 @@ def file_to_list(doc, split_word="From"):
 	---------
 	Input:
 	doc: string
+	split_word: defaults to "From". 
+	Skips lines not starting with split_word.
 	
 	Output:
 	lst: list
@@ -32,7 +35,6 @@ def file_to_list(doc, split_word="From"):
 	lst = []
 	for line in doc:
 		line_temp = line.replace("  ", " ").split(" ")
-		#if line_temp[0] == "From":
 		if line_temp[0] == split_word:
 			lst.append(line_temp)
 	return lst
@@ -56,7 +58,8 @@ def dict_times(lst):
 	return times
 
 def dict_names(lst):
-	''' takes lst, creates dict, updates indexed items to dict, otherwise, creates item in dict. 
+	''' takes lst containing emails and returns dict of emails and occurences.
+	
 	Parameters
 	----------
 	Input:
@@ -120,16 +123,28 @@ def main():
 	names: dict
 	final_email: list
 	final_times: list"""
+	#test_file_to_list()
 	doc = open_file()
 	lst = file_to_list(doc)
 	times = dict_times(lst)
 	names = dict_names(lst)
 	final_email = combine_emails(names)
 	final_times = combine_times(times)
-	print(final_email[0])
+	#print(final_email[0])
+	for item in final_email:
+		print(item)
 	print()	
 	for item in final_times:
 		print("Hour:", item[0], "Commits:", item[1])
 
+#def test_file_to_list():
+
+#def test_dict_times():
+
+#def test_dict_names():
+
+#def test_combine_emails():
+
+#def test_combine_times():
 
 main()
