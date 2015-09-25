@@ -1,43 +1,55 @@
-"""commit_hour() prompts the user for a text file to scan.  \n
-The program then scans the file for lines containing the word \n
-the word \'From' and splits the line into a list. As we are only \n
-concerned with lists containing more than two items, the program will \n
-discard lines shorter than this, as they do not contain valid timestamps. \n\n
-
-The program will then sort the timestamps and return one per line with \n
-the most number of commits, along with the total number of commits."""
-
-def commit_hour():
-    filename = input("input filename ")
-    file = open(filename, 'r')
-    hour_lst = []
-
-    for line in file:
-        if "From" in line:
-            if len(line.split()) > 2:
-                a = line.split()
-                b = a[5]
-                hour_lst.append(b[:2])
-
-
-    fin_count_hour = [] 
-    for item in range(len(hour_lst)):
-        commit_count = hour_lst.count(hour_lst[item])
-        commit_time = hour_lst[item]
-        commit_tuple = commit_count, commit_time
-        fin_count_hour.append(commit_tuple)
-        fin_count_hour.sort(reverse=True)
-    
-    for item in range(len(fin_count_hour)):
-        if fin_count_hour[item] != fin_count_hour[item - 1]:
-            print(fin_count_hour[item])
+# hour_Dana_Kevin.py
+# Authors = Dana and Kevin
+# Usage: import in python interpreter.
+def main():
+    """Takes a text file and returns the email address of the person
+    with the total number of commits.
+    """
+    file = open_file()
+    output1 = line_scan(file)
+    output2 = counted_emails(output1)
     file.close()
-  
-# """Unit Tests"""
-# assert commit_hour() == (100, '10')
-# print('Passed unit test.')
+    
+def open_file():
+    """Opens a text file indicated by the user."""
+    filename = input("Input filename. > ")
+    file = open(filename, 'r')
+    print("Opened " + filename )
+    return file
+    
+def line_scan(file):
+    """Inputs the text file and outputs a list of email addresses"""
+    line_lst = []
+    for line in file:
+        if "From" in line: # The From line contains the relevant email addresses
+                           # and commit hours. 
+            if len(line.split()) > 2: # We are only interested in lines
+                                      # that contain more than two objects,
+                                      # as they have the time stamps
+                                      # associated with valid commits.
+                a = line.split()
+                line_lst.append(a[1])
+    return line_lst 
+    
+def counted_emails(line_lst): 
+    """Inputs a list of email addresses, counts and sorts the list, and outputs 
+    the final counts, sorted by the greatest number of commits. 
+    """
+    tot_emails = []
+    for item in line_lst:
+        email = item
+        commit = line_lst.count(item)
+        num = commit, email
+        tot_emails.append(num)
+    tot_emails.sort(reverse=True)
+        
+    print(tot_emails[0])
+       
 
-commit_hour()
-
-
-                               
+"""Unit Tests
+def line_scan_test():
+    assert line_scan("From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008") == ['stephen.marquard@uct.ac.za']
+def counted_emails_test("")
+"""   
+main()
+#line_scan_test()
