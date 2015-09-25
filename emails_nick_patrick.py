@@ -10,7 +10,6 @@ def open_file():
     ----------
     Input:
     
-
     Output:
     file1: list
     A list with each line in the file being stored as a list element
