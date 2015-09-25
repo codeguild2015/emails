@@ -5,6 +5,7 @@
 def main():
     """Takes a text file and returns the number of total commits per
     hour in the day."""
+
     file = open_file()
     output1 = line_scan(file)
     output2 = counted_hours(output1)
@@ -12,11 +13,13 @@ def main():
 def open_file():
     """Opens a text file indicated by the user."""
     filename = input("Input filename. > ")
+
     file = open(filename, 'r')
     return file
     
 def line_scan(file):
     """Inputs the text file and outputs a list of unsorted commit hours"""
+
     hour_lst = []
     for line in file:
         if "From" in line: # The From line contains the relevant email addresses
@@ -37,6 +40,7 @@ def line_scan(file):
 def counted_hours(hour_lst):
     """Inputs a list of commit hours, counts and sorts the list, and outputs 
     the final counts, sorted by hour of the day """
+
     fin_count_hour = [] 
     for item in hour_lst:
         commit_count = hour_lst.count(item)
@@ -52,20 +56,5 @@ def counted_hours(hour_lst):
             print(hour, commit)
 main()
 
-"""Unit Tests"""
-"""def line_scan_test():
-    assert line == "From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008"
-    assert line_scan_test(split_line[0]) == ['From', 'stephen.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']
-"""
 
-#def line_scan_test(file):
-#    assert file = 'mbox-short.txt'
-#     assert line_scan_test(file) = 
-    
-#line_scan_test(file)
-    
-def counted_hour_test():
-    assert line_scan(hour_lst[0]) == 5
-counted_hour_test()
-
-#print("Passed unit tests.")#
+#print("Passed unit tests.")
