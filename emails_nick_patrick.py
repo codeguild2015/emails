@@ -9,7 +9,7 @@ def open_file():
     return file1
 
 
-def list_split(iter1):
+def from_line_split(iter1):
     """Parses the .txt file, extracts all lines starting with "From" and appends them to a list."""
     lst = []
     for line in iter1:
@@ -27,7 +27,7 @@ def build_count_dict(lst):
     return count_dict
 
 
-def prep_out_most(dict1):
+def pull_head(dict1):
     """please add header here"""
     head, *tail = sorted(dict1.items(), key=lambda x:x[1], reverse=True)
     return head
@@ -36,9 +36,9 @@ def prep_out_most(dict1):
 def main():
     """ put comment here please"""
     iter1 = open_file()
-    lst = list_split(iter1)
+    lst = from_line_split(iter1)
     name_count = build_count_dict(lst)
-    head = prep_out_most(name_count)
+    head = pull_head(name_count)
     print("Most commits: {} - {}\n".format(head[0], head[1]))
 
 
