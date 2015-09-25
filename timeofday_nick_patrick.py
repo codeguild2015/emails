@@ -9,7 +9,7 @@ def open_file():
     return file1
 
 
-def list_split(iter1):
+def from_line_split(iter1):
     """Parses the .txt file, extracts all lines starting with "From" and appends them to a list."""
     lst = []
     for line in iter1:
@@ -26,7 +26,7 @@ def build_count_dict(lst):
         count_dict[item[5][:2]] = count_dict.get(item[5][:2], 0) + 1
     return count_dict
 
-def prep_out_list(dict1):
+def format_output(dict1):
     """please add header here"""
     print("Hour - Commits")
     for item in sorted(dict1):
@@ -36,8 +36,10 @@ def prep_out_list(dict1):
 def main():
     """ put comment here please"""
     iter1 = open_file()
-    lst = list_split(iter1)
+    lst = from_line_split(iter1)
     hours_count = build_count_dict(lst)
-    prep_out_list(hours_count)
+    format_output(hours_count)
 
-main()
+
+if __name__ == '__main__':
+    main()
