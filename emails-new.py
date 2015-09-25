@@ -110,13 +110,18 @@ def file_to_list_test():
     assert file_to_list(['From in my test string']) == [['From', 'in', 'my', 'test', 'string']]
     assert file_to_list(['in my test string']) == []
 
-def dict_names_and_times_test():
+def dict_times_test():
     a = [['From', 'stephen.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']]
     b = [['From', 'louis@media.berkeley.edu', 'Fri', 'Jan', '4', '18:10:48', '2008']]
     c = a + a + b
     assert dict_times(a) == {'09': 1}
     assert dict_times(c) == {'09': 2, '18': 1}
     assert dict_times([]) == {}
+
+def dict_names_test():
+    a = [['From', 'stephen.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']]
+    b = [['From', 'louis@media.berkeley.edu', 'Fri', 'Jan', '4', '18:10:48', '2008']]
+    c = a + a + b
     assert dict_names(a) == {'stephen.marquard@uct.ac.za': 1}
     assert dict_names(c) == {'stephen.marquard@uct.ac.za': 2, 'louis@media.berkeley.edu': 1}
     assert dict_names([]) == {}
@@ -128,11 +133,14 @@ def combine_emails_test():
     assert combine_emails({}) == []
 
 def combine_times_test():
-    
-    
+    assert combine_times({'09': 1}) == [['09', 1]]
+    assert combine_times({'09': 2, '18': 1}) == [['09', 2], ['18', 1]]
+    assert combine_times({}) == []
+
 def test():
     file_to_list_test()
-    dict_names_and_times_test()
+    dict_times_test()
+    dict_names_test()
     combine_emails_test()
     combine_times_test()
 
@@ -155,8 +163,9 @@ def main():
     names = dict_names(lst)
     final_email = combine_emails(names)
     final_times = combine_times(times)
-    print(final_email[0])
-    print() 
+    print("Commits:", final_email[0][0], "Email:", final_email[0][1])
+    #for item in final_email[0]:
+        #print("Commits:", item[0], "Email:", item[1])
     for item in final_times:
         print("Hour:", item[0], "Commits:", item[1])
     test()
