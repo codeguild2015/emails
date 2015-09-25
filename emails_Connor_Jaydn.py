@@ -35,8 +35,8 @@ def file_to_list(doc, split_word="From"):
 	if doc:
 		lst = []
 		for line in doc:
-			line_temp = line.replace("  ", " ").split(" ")
-			if line_temp[0] == split_word:
+			line_temp = line.replace("  ", " ").split(" ") # single double space throws error, replaced with single space
+			if line_temp[0] == split_word:# allows split word to be replaced 
 				lst.append(line_temp)
 		return lst
 	
@@ -52,7 +52,7 @@ def dict_times(lst):
 
 	times = {} 
 	for item in lst:
-		if item[5][0:2] in times:
+		if item[5][0:2] in times: # Pulls out time 
 			times[item[5][0:2]] += 1
 		else:
 			times.update({item[5][0:2] : 1})
@@ -71,7 +71,7 @@ def dict_names(lst):
 	
 	emails = {}
 	for item in lst:
-		if item[1] in emails:
+		if item[1] in emails: # checks for email, then creates dict of emails
 			emails[item[1]] +=1
 		else:
 			emails.update({item[1]: 1})
@@ -89,7 +89,7 @@ def combine_emails(names):
 	sorted list """
 	
 	lst = [] 
-	for name, count in names.items():
+	for name, count in names.items(): 
 		lst.append([count, name])
 	lst.sort(reverse = True)
 	return lst
@@ -135,7 +135,7 @@ def main():
 	names = dict_names(lst)
 	final_email = combine_emails(names)
 	final_times = combine_times(times)
-	print("Commits: ",final_email[0][0], "Email: ", final_email[0][1])
+	print("Commits: ",final_email[0][0], "Email: ", final_email[0][1])# list in list needs double indexes to print properly.
 	print()	
 	for item in final_times:
 		print("Hour:", item[0], "Commits:", item[1])
