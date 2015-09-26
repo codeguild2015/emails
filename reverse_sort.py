@@ -7,9 +7,11 @@ def sort_reverse(lst_of_tups):
     #print(sorted(lst_of_tups, key=lambda commits: commits[1]) )
     #lst_of_tups( sorted(lst_of_tups, key=lambda commits: commits[1]) )
     #lst_of_tups(:-1)  
+	print("lst_of_tups is type:  ", type(lst_of_tups))
 	print("lst_of_tups in sort_reverse before sort is:", lst_of_tups)
-	for count, val in lst_of_tups.sort(reverse=True):
-		print(count, val)
+	print("reverse sorted list is: ", sorted(lst_of_tups,key=lambda x:(-x[1],x[0])) )
+	#for count, val in lst_of_tups.sort(reverse=True):
+	#	print(count, val)
 
 
 lst_tups=[('raphael', 1), ('jessie', 0), ('sally', 2)]

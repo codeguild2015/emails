@@ -1,9 +1,10 @@
 def parse_file(filename):
 	'''Input - filename of helper files
 	Output - Some sort of data structure with all 'From' lines with leading from removed'''
-	file = open(filename, r)
+	file = open(filename, 'r')
 	for line in file:
-		print(line)
+		if lst1[0] == "From":
+			print(line)
 	# return lst
 
 def count_user_commits():
@@ -13,7 +14,7 @@ def count_user_commits():
 
 
 
-parse_file("mail_short.txt")
+parse_file("mbox-short.txt")
 
 #txt = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
  # sets words to a list of each word from string txt

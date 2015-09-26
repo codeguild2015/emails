@@ -11,8 +11,8 @@ def read_file(filename):
         if lst1[0] == "From":
             lst2.append(lst1[1:]) 
     #remove_unique_address(lst2)
-    #print("lst2 is:  ", lst2)
-    count(lst2)
+    print("lst2 is:  ", lst2)
+    #count(lst2)
 
 def remove_unique_address(lst):
     '''inputs - list of lists from read_file()
@@ -65,7 +65,10 @@ def sort_reverse(lst_of_tups):
 file1 = 'one_good_line.txt'
 file2 = 'two_good_line.txt'
 file3 = 'two_good_line.txt'
-file4 = 'bogus_file.txt'
+file4 = 'mbox-short.txt'
+
+read_file(file4)
+
 
 #read_file assertions
 #assert read_file(file1) == [['stephen.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']] 
@@ -79,8 +82,8 @@ file4 = 'bogus_file.txt'
 unique = ['sally', 'jessie', 'raphael']
 lst = [['sally', '1', '2'], ['sally', '1', '2']]
 
-t = count(lst, unique)
-print("The returned value of t is:  ", t)
+#t = count(lst, unique)
+#print("The returned value of t is:  ", t)
 #lst = read_file(file4)
 #lst = read_file(file) 
 #lst2 = count(lst, unique_list)

@@ -57,8 +57,8 @@ def sort_reverse(lst_of_tups):
     #lst_of_tups.sort(reverse = True)
     print("lst_of_tups contains:  ", lst_of_tups)
     #print(sorted(lst_of_tups, key=lambda commits: commits[1]) )
-    return( sorted(lst_of_tups, key=lambda commits: commits[1]) )
-   
+    lst_of_tups( sorted(lst_of_tups, key=lambda commits: commits[1]) )
+    lst_of_tups(:-1)  
 #Test files for assertions
 file1 = 'one_good_line.txt'
 file2 = 'two_good_line.txt'
