@@ -67,14 +67,14 @@ def count_(lst, unique):
     """
 
     commits_user = list() #list variable for storing a list of tuples
-    print("Value of lst before for is: ", lst)
+    #print("Value of lst before for is: ", lst)
     for name in unique:
         count = 0 #re-init the counter to 0 for each element of the unique list
         for index, elem in enumerate(lst):
-            print("name in inner for is: ", name)
-            print("elem is ", elem)
-            print("index is ", index)
-            print("elem[0] is ", elem[0])
+            # print("name in inner for is: ", name)
+            # print("elem is ", elem)
+            # print("index is ", index)
+            # print("elem[0] is ", elem[0])
             if name == elem[0]:
                 count += 1
 
@@ -89,7 +89,7 @@ def sort_reverse(lst_of_tups):
     """
     #lst_of_tups.sort(reverse = True)
     #print("lst_of_tups contains:  ", lst_of_tups)
-    reversed_tups = sorted(lst_of_tups,key=lambda x:(-x[1],x[0]))
+    reversed_tups = sorted(lst_of_tups, reverse=True)
     #print("reverse sorted list is: ", reversed_tups )
     return reversed_tups
 
@@ -123,15 +123,15 @@ def main():
 
     # remove_unique_address() assertions will go here
     unique_list = remove_unique_address(raw_commits)
-    print("Unique addresses after calling remove_unique_addresses are:  ", unique_list)
+    #print("Unique addresses after calling remove_unique_addresses are:  ", unique_list)
 
 
     # count_() assertions will go here
     # dummy lists to pass to count
     #unique = ['sally', 'jessie', 'raphael']
     #lst = [['sally', '1', '2'], ['sally', '1', '2'], ['raphael', '1', '2']]
-    t = count_(raw_commits, unique_list)
-    print("The returned value of t is:  ", t)
+    commits_per_user = count_(raw_commits, unique_list)
+    #print("The returned value of commits_per_user is:  ", commits_per_user)
     #lst = read_file(file4)
     #lst = read_file(file) 
     #lst2 = count(lst, unique_list)
@@ -142,8 +142,9 @@ def main():
 
     # sort_reverse() assertions will go here
     #print( "the sorted list return value is:  ", sort_reverse(t) )
-    #reversed = sort_reverse(result)
-    #print(reversed)
+    reversed = sort_reverse(commits_per_user)
+    # print("The value of reversed is:  ", reversed)
+    print("Most commits is: {} - {} ".format(reversed[0][0], reversed[0][1]) )
 
 main()
 
