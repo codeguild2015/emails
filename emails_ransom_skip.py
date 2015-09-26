@@ -1,15 +1,24 @@
+# Author:  Ransom V and Skip A
+# Written 9/25/15
+# References: Google, StackOverFlow
+# Program to read in an email file and output the user with the most number of commits
+# Program does not include commits per hour.
+
+
 def get_filename():
-    """Arguments - none 
+    """
+    Arguments - none 
     returns - pointer to a file
     """
 
     filename = input("Input filename:  ")
-    file_pointer = open(filename, 'r')
-    return file_pointer
+    f = open(filename, 'r')
+    return f
 
 def read_file(file_pointer):
-    """inputs - file to read
-    outputs - a list of lists containing all the from lines from the file
+    """
+    Arguments - Address of a file to read
+    Returns - a list of lists containing all the from lines from the file
     """
     
     lst2 = []
@@ -28,28 +37,11 @@ def read_file(file_pointer):
 
 
 def remove_unique_address(lst):
-    """inputs - list of lists from read_file()
-    outputs - list of unique address
     """
-    # addresses = []
-    # #print("lst in remove_unique_address is:  ", lst)
+    Arguments - list of lists from read_file()
+    Returns - list of unique address
+    """
 
-    # # Remove everything but the address in the list of lists
-    # addresses = []
-    # for x in range(0, len(lst)):
-    #     #print("value of x is:  ", i)
-    #     #print(lst[i][0])
-    #     addresses.append  (lst[i][0])
-    #     for i in range(0, len(addresses)):
-    #         if addresses[i] == lst[x]:
-    #             continue
-    #         else:
-    #             addresses[i] == lst[x]
-    #     #addresses += (lst[0][i])
-    # print("addresses: ", addresses)
-    # print("addresses type: ", type(addresses))
-    
-    # #print("addresses: ", addresses)
     addresses = []
     for x in range(len(lst)):
         if lst[x][0] in addresses:
@@ -60,50 +52,43 @@ def remove_unique_address(lst):
     return addresses 
 
 def count_(lst, unique):
-    """inputs - list of lists.  Each list contains address as first element
-              - a list of unique names
+    """
+    Arguments - 
+    - list of lists.  Each list contains address as first element
+    - list of unique names
 
-    output - list of tuples with elements address, count
+    Returns - list of tuples with elements count and email address
     """
 
     commits_user = list() #list variable for storing a list of tuples
-    #print("Value of lst before for is: ", lst)
+ 
     for name in unique:
         count = 0 #re-init the counter to 0 for each element of the unique list
         for index, elem in enumerate(lst):
-            # print("name in inner for is: ", name)
-            # print("elem is ", elem)
-            # print("index is ", index)
-            # print("elem[0] is ", elem[0])
             if name == elem[0]:
                 count += 1
-
         commits_user.append((count, name))
     return(commits_user)
 
-
-
 def sort_reverse(lst_of_tups):
-    """input list of tuples from count function
-    output sorted list keying on the # of commits value 
     """
-    #lst_of_tups.sort(reverse = True)
-    #print("lst_of_tups contains:  ", lst_of_tups)
+    Arguments - list of tuples from count function
+    
+    Returns - sorted list  of tuples keying on the # of commits value
+    list sorted from most to least commits 
+    """
+
     reversed_tups = sorted(lst_of_tups, reverse=True)
-    #print("reverse sorted list is: ", reversed_tups )
     return reversed_tups
 
-# End of functions  
+# End of non-main functions  
  
 def main():
-        #Test files for assertions
+    # get_filename() assertions will go here
+    f = get_filename()
 
-    file_pointer = get_filename()
-    #print("file pointer is: ", file_pointer)
-
-
-
-    # Test files for assertions
+    # read_file() 
+    # Test files for assertions will go here
     file1 = 'one_good_line.txt'
     file2 = 'two_good_line.txt'
     file3 = 'two_good_one_bad.txt'
@@ -111,39 +96,24 @@ def main():
     file5 = 'mbox-short.txt'
     file6 = 'mbox-short1.txt'
     file7 = 'mbox.txt'
+
     #assert read_file(file1) == [['stephen.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']] 
     #assert read_file(file2) == [['fist_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008'], ['second_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']]
     #assert read_file(file3) == [['fist_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008'], ['second_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']]
     #assert read_file(file4) == [['fist_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008'], ['second_list.marquard@uct.ac.za', 'Sat', 'Jan', '5', '09:14:16', '2008']]
     #print("Assert tests passed")
     #print(read_file(file3))
-    raw_commits = read_file(file_pointer)
-    #print("Raw commits after running read_file on mbox-short.txt is:  ", raw_commits)
-
+    raw_commits = read_file(f)
 
     # remove_unique_address() assertions will go here
     unique_list = remove_unique_address(raw_commits)
-    #print("Unique addresses after calling remove_unique_addresses are:  ", unique_list)
-
-
-    # count_() assertions will go here
-    # dummy lists to pass to count
-    #unique = ['sally', 'jessie', 'raphael']
     #lst = [['sally', '1', '2'], ['sally', '1', '2'], ['raphael', '1', '2']]
+    
+    # commits_per_user assertions will go here
     commits_per_user = count_(raw_commits, unique_list)
-    #print("The returned value of commits_per_user is:  ", commits_per_user)
-    #lst = read_file(file4)
-    #lst = read_file(file) 
-    #lst2 = count(lst, unique_list)
-    #print("list in main is: ", lst)
-    #result = count_(raw_commits, unique_list)
-    #print("result after calling count_", result)
-
 
     # sort_reverse() assertions will go here
-    #print( "the sorted list return value is:  ", sort_reverse(t) )
-    reversed = sort_reverse(commits_per_user)
-    # print("The value of reversed is:  ", reversed)
+    reversed = sort_reverse(commits_per_user)   
     print("Most commits is: {} - {} ".format(reversed[0][0], reversed[0][1]) )
 
 main()
