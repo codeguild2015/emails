@@ -23,7 +23,7 @@ def read_file(file_pointer):
             #for words in lst1:
             if lst1[0] == "From":
                 lst2.append(lst1[1:]) 
-    print("lst2 in read_file function is:  ", lst2)
+    # print("lst2 in read_file function is:  ", lst2)
     return lst2
 
 
@@ -31,25 +31,32 @@ def remove_unique_address(lst):
     """inputs - list of lists from read_file()
     outputs - list of unique address
     """
-    addresses = []
-    #print("lst in remove_unique_address is:  ", lst)
+    # addresses = []
+    # #print("lst in remove_unique_address is:  ", lst)
 
-    # Remove everything but the address in the list of lists
-    addresses = []
-    for x in range(0, len(lst)):
-        #print("value of x is:  ", i)
-        #print(lst[i][0])
-        addresses.append  (lst[i][0])
-        for i in range(0, len(addresses)):
-            if addresses[i] == lst[x]:
-                continue
-            else:
-                addresses[i] == lst[x]
-        #addresses += (lst[0][i])
-    print("addresses: ", addresses)
-    print("addresses type: ", type(addresses))
+    # # Remove everything but the address in the list of lists
+    # addresses = []
+    # for x in range(0, len(lst)):
+    #     #print("value of x is:  ", i)
+    #     #print(lst[i][0])
+    #     addresses.append  (lst[i][0])
+    #     for i in range(0, len(addresses)):
+    #         if addresses[i] == lst[x]:
+    #             continue
+    #         else:
+    #             addresses[i] == lst[x]
+    #     #addresses += (lst[0][i])
+    # print("addresses: ", addresses)
+    # print("addresses type: ", type(addresses))
     
-    #print("addresses: ", addresses)
+    # #print("addresses: ", addresses)
+    addresses = []
+    for x in range(len(lst)):
+        if lst[x][0] in addresses:
+            continue
+        else:
+            addresses.append(lst[x][0])
+
     return addresses 
 
 def count_(lst, unique):
@@ -59,7 +66,7 @@ def count_(lst, unique):
     output - list of tuples with elements address, count
     """
 
-    t = list() #list variable for storing a list of tuples
+    commits_user = list() #list variable for storing a list of tuples
     print("Value of lst before for is: ", lst)
     for name in unique:
         count = 0 #re-init the counter to 0 for each element of the unique list
@@ -71,8 +78,8 @@ def count_(lst, unique):
             if name == elem[0]:
                 count += 1
 
-        t.append((name, count))
-    return(t)
+        commits_user.append((count, name))
+    return(commits_user)
 
 
 
@@ -123,8 +130,8 @@ def main():
     # dummy lists to pass to count
     #unique = ['sally', 'jessie', 'raphael']
     #lst = [['sally', '1', '2'], ['sally', '1', '2'], ['raphael', '1', '2']]
-    #t = count_(lst, unique)
-    #print("The returned value of t is:  ", t)
+    t = count_(raw_commits, unique_list)
+    print("The returned value of t is:  ", t)
     #lst = read_file(file4)
     #lst = read_file(file) 
     #lst2 = count(lst, unique_list)
